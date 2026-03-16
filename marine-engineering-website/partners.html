@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Strategic partnerships and collaborations with leading marine engineering companies.">
   <title>Partners - Marine Engineering & Shipbuilding</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=20260316-site-structured-5">
 </head>
 <body>
   <!-- ================================================================
@@ -14,11 +14,9 @@
   <nav class="navbar">
     <div class="navbar-container">
       <div class="navbar-logo">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
-          <path d="M20 8C20 8 10 20 10 25C10 28.3 14.5 31 20 31C25.5 31 30 28.3 30 25C30 20 20 8 20 8Z" fill="currentColor"/>
-        </svg>
-        <span>MarineEngineer</span>
+        <a href="index.html" aria-label="PEW Vizag home">
+          <img src="images/pew-vizag-logo.svg" alt="PEW Vizag logo">
+        </a>
       </div>
       <button class="navbar-toggle" aria-label="Toggle menu">
         <span>☰</span>
@@ -38,9 +36,9 @@
   <!-- ================================================================
        PAGE HEADER
        ================================================================ -->
-  <section class="hero" style="min-height: 400px;">
-    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 31, 63, 0.8), rgba(0, 115, 230, 0.7)); z-index: 1;"></div>
-    <div class="hero-content">
+  <section class="hero page-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
       <h1>Strategic Partnerships</h1>
       <p>Collaborating for Excellence in Marine Engineering</p>
     </div>
@@ -49,7 +47,7 @@
   <!-- ================================================================
        BREADCRUMB
        ================================================================ -->
-  <section class="section" style="padding: 2rem 0;">
+  <section class="section breadcrumb-section">
     <div class="container">
       <div class="breadcrumb">
         <a href="index.html">Home</a>
@@ -64,12 +62,15 @@
        ================================================================ -->
   <section class="section">
     <div class="container text-center" style="max-width: 800px; margin: 0 auto; margin-bottom: var(--spacing-3xl);">
-      <h2>Our Strategic Partners</h2>
-      <p style="font-size: var(--font-size-lg);">
-        We believe in the power of collaboration. Our strategic partnerships with leading global companies enable us 
-        to deliver world-class marine engineering and shipbuilding solutions. Together, we drive innovation, sustainability, 
-        and excellence in the maritime industry.
-      </p>
+      <div class="page-shell section-intro">
+        <span class="section-kicker">Collaboration</span>
+        <h2>Our Strategic Partners</h2>
+        <p class="section-subtitle">
+          We believe in the power of collaboration. Our strategic partnerships with leading global companies enable us
+          to deliver world-class marine engineering and shipbuilding solutions. Together, we drive innovation, sustainability,
+          and excellence in the maritime industry.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -78,42 +79,45 @@
        ================================================================ -->
   <section class="section section-light" id="racmet-partnership">
     <div class="container">
-      <div class="section-title">
-        <h2>RacMet Partnership</h2>
-      </div>
-      <div class="grid grid-2" style="align-items: center; gap: var(--spacing-3xl);">
-        <div>
-          <h3>Strategic Alliance with RacMet</h3>
-          <p>
-            Marine Engineering & Shipbuilding is proud to announce our strategic partnership with RacMet, 
-            a globally recognized leader in advanced marine materials and metallurgical solutions. This partnership 
-            represents a significant milestone in our commitment to providing cutting-edge shipbuilding capabilities.
-          </p>
-          
-          <h4 style="margin-top: var(--spacing-2xl); color: var(--primary-ocean-blue);">Partnership Benefits</h4>
-          <ul>
+      <div class="page-shell">
+        <div class="section-title">
+          <span class="section-kicker">Featured Alliance</span>
+          <h2>RacMet Partnership</h2>
+        </div>
+        <div class="grid grid-2 split-shell">
+          <div class="content-panel">
+            <h3>Strategic Alliance with RacMet</h3>
+            <p>
+              Marine Engineering & Shipbuilding is proud to announce our strategic partnership with RacMet,
+              a globally recognized leader in advanced marine materials and metallurgical solutions. This partnership
+              represents a significant milestone in our commitment to providing cutting-edge shipbuilding capabilities.
+            </p>
+
+            <h4>Partnership Benefits</h4>
+            <ul class="structured-list">
             <li><strong>Advanced Materials:</strong> Access to RacMet's premium marine-grade alloys and composites</li>
             <li><strong>Quality Assurance:</strong> Rigorous testing and certification processes for all materials</li>
             <li><strong>Sustainability:</strong> Eco-friendly materials aligned with modern environmental standards</li>
             <li><strong>Cost Efficiency:</strong> Optimized material sourcing reducing overall project costs</li>
             <li><strong>Technical Support:</strong> Expert consultation on material selection and application</li>
             <li><strong>Innovation:</strong> Joint R&D initiatives for next-generation marine materials</li>
-          </ul>
+            </ul>
 
-          <h4 style="margin-top: var(--spacing-2xl); color: var(--primary-ocean-blue);">About RacMet</h4>
-          <p style="font-size: var(--font-size-sm); margin-bottom: var(--spacing-md);">
-            RacMet is a leading international supplier of specialized metals and metallurgical services. 
-            With facilities across Europe and Asia, they serve the most demanding applications in aerospace, 
-            marine, and industrial sectors.
-          </p>
-          <a href="#contact-partner" class="btn btn-primary">Learn More About Collaboration</a>
-        </div>
-        <div>
-          <img src="images/partner-racmet.jpg" alt="RacMet Partnership" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: var(--spacing-2xl);">
-          <div class="card">
-            <div class="card-content">
-              <h4 style="text-align: center; color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Partnership Since 2020</h4>
-              <p style="text-align: center; margin-bottom: 0; color: var(--text-light);">10+ successful joint projects delivering premium marine vessels worldwide</p>
+            <h4>About RacMet</h4>
+            <p style="font-size: var(--font-size-sm); margin-bottom: var(--spacing-md);">
+              RacMet is a leading international supplier of specialized metals and metallurgical services.
+              With facilities across Europe and Asia, they serve the most demanding applications in aerospace,
+              marine, and industrial sectors.
+            </p>
+            <a href="#contact-partner" class="btn btn-primary">Learn More About Collaboration</a>
+          </div>
+          <div class="media-panel">
+            <img src="images/partner-racmet.jpg" alt="RacMet Partnership" class="feature-image">
+            <div class="card feature-card partner-note">
+              <div class="card-content">
+                <h4 style="text-align: center; margin-bottom: var(--spacing-lg);">Partnership Since 2020</h4>
+                <p style="text-align: center; margin-bottom: 0; color: var(--text-light);">10+ successful joint projects delivering premium marine vessels worldwide</p>
+              </div>
             </div>
           </div>
         </div>
@@ -144,9 +148,9 @@
       <div class="section-title">
         <h2>Our Key Partners</h2>
       </div>
-      <div class="grid grid-3">
+      <div class="grid grid-3 partner-grid info-grid">
         <!-- Classification Society Partners -->
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">ABS</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -156,7 +160,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">DNV GL</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -166,7 +170,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Lloyd's Register</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -177,7 +181,7 @@
         </div>
 
         <!-- Technology Partners -->
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Dassault Systèmes</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -187,7 +191,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Wärtsilä</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -197,7 +201,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">ABB Marine</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -208,7 +212,7 @@
         </div>
 
         <!-- Supply Chain Partners -->
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">RacMet</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -218,7 +222,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Rolls-Royce Marine</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -228,7 +232,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card partner-card">
           <div class="card-content text-center">
             <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Kongsberg Maritime</h4>
             <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
@@ -249,8 +253,8 @@
       <div class="section-title">
         <h2>Partnership Programs</h2>
       </div>
-      <div class="grid grid-3">
-        <div class="card">
+      <div class="grid grid-3 program-grid info-grid">
+        <div class="card feature-card program-card">
           <div class="card-content">
             <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">Supplier Partnership</h4>
             <p style="text-align: center; margin-bottom: var(--spacing-lg);">
@@ -262,7 +266,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card program-card">
           <div class="card-content">
             <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">Technology Alliance</h4>
             <p style="text-align: center; margin-bottom: var(--spacing-lg);">
@@ -274,7 +278,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card feature-card program-card">
           <div class="card-content">
             <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">Joint Ventures</h4>
             <p style="text-align: center; margin-bottom: var(--spacing-lg);">
@@ -294,12 +298,13 @@
        ================================================================ -->
   <section class="section" id="contact-partner">
     <div class="container" style="max-width: 700px;">
-      <div class="text-center" style="margin-bottom: var(--spacing-2xl);">
-        <h2>Interested in Partnership?</h2>
-        <p>Let's explore how we can collaborate to drive innovation in marine engineering</p>
-      </div>
+      <div class="form-shell">
+        <div class="text-center" style="margin-bottom: var(--spacing-2xl);">
+          <h2>Interested in Partnership?</h2>
+          <p>Let's explore how we can collaborate to drive innovation in marine engineering</p>
+        </div>
 
-      <form>
+        <form>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Company Name *</label>
@@ -338,8 +343,9 @@
           <textarea class="form-textarea" placeholder="Tell us about your partnership interests..." required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-large btn-block">Submit Partnership Inquiry</button>
-      </form>
+          <button type="submit" class="btn btn-primary btn-large btn-block">Submit Partnership Inquiry</button>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -359,7 +365,7 @@
   <!-- ================================================================
        FOOTER
        ================================================================ -->
-  <footer class="footer">
+  <footer class="footer footer-compact">
     <div class="footer-content">
       <div class="footer-section">
         <h4>About Marine Engineering</h4>
@@ -370,16 +376,6 @@
           <a href="#" title="Twitter">𝕏</a>
           <a href="#" title="YouTube">▶</a>
         </div>
-      </div>
-      <div class="footer-section">
-        <h4>Quick Links</h4>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="divisions.html">Divisions</a>
-        <a href="media.html">Media</a>
-        <a href="partners.html">Partners</a>
-        <a href="careers.html">Careers</a>
-        <a href="contact.html">Contact</a>
       </div>
       <div class="footer-section">
         <h4>Services</h4>

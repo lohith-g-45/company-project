@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 112" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">PEW Vizag logo</title>
+  <desc id="logoDesc">PEW Vizag wordmark with maritime stripes and underline.</desc>
+  <rect x="2" y="2" width="356" height="108" rx="18" fill="#ffffff"/>
+  <g transform="translate(14 24)">
+    <path d="M0 0h64l-7 10H0z" fill="#1f2328"/>
+    <path d="M0 16h58l-7 10H0z" fill="#1f2328"/>
+    <path d="M0 32h52l-7 10H0z" fill="#1f2328"/>
+    <path d="M0 48h44l34 12H12z" fill="#b01c2e"/>
+  </g>
+  <text x="83" y="69" fill="#243b82" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" letter-spacing="-2">PEW</text>
+  <text x="248" y="72" fill="#1f2328" font-family="Outfit, Arial, sans-serif" font-size="34" font-weight="600">vizag</text>
+  <g transform="translate(281 34)" fill="#b01c2e">
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#b01c2e" stroke-width="3"/>
+    <circle cx="0" cy="0" r="2.5"/>
+    <rect x="-1.2" y="-12" width="2.4" height="4" rx="1.2"/>
+    <rect x="-1.2" y="8" width="2.4" height="4" rx="1.2"/>
+    <rect x="8" y="-1.2" width="4" height="2.4" rx="1.2"/>
+    <rect x="-12" y="-1.2" width="4" height="2.4" rx="1.2"/>
+    <rect x="5.8" y="-9.4" width="2.4" height="4" rx="1.2" transform="rotate(45 7 -7.4)"/>
+    <rect x="5.8" y="5.4" width="2.4" height="4" rx="1.2" transform="rotate(135 7 7.4)"/>
+    <rect x="-8.2" y="5.4" width="2.4" height="4" rx="1.2" transform="rotate(-135 -7 7.4)"/>
+    <rect x="-8.2" y="-9.4" width="2.4" height="4" rx="1.2" transform="rotate(-45 -7 -7.4)"/>
+  </g>
+  <path d="M74 86H321" stroke="#b01c2e" stroke-width="5" stroke-linecap="round"/>
+</svg>
