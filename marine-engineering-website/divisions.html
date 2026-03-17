@@ -23,8 +23,23 @@
       </button>
       <ul class="navbar-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="divisions.html">Divisions</a></li>
+                        <li class="nav-dropdown">
+          <a href="about.html" class="nav-dropdown-link">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="about.html">Company History</a></li>
+            <li><a href="about-values.html">Core Values</a></li>
+            <li><a href="about-leadership.html">Leadership Team</a></li>
+            <li><a href="about-certifications.html">Certifications</a></li>
+          </ul>
+        </li>
+                <li class="nav-dropdown">
+          <a href="divisions.html" class="nav-dropdown-link">Divisions</a>
+          <ul class="dropdown-menu">
+            <li><a href="divisions.html?division=marine">Marine Engineering</a></li>
+            <li><a href="divisions.html?division=shipbuilding">Ship Building</a></li>
+            <li><a href="divisions.html?division=repair">Ship Repair &amp; Modernization</a></li>
+          </ul>
+        </li>
         <li><a href="media.html">Media</a></li>
         <li><a href="partners.html">Partners</a></li>
         <li><a href="careers.html">Careers</a></li>
@@ -60,11 +75,10 @@
   <!-- ================================================================
        MARINE ENGINEERING DIVISION
        ================================================================ -->
-  <section class="section" id="marine">
+  <section class="section" id="marine" data-division-section="marine">
     <div class="container">
       <div class="page-shell">
         <div class="section-title">
-          <span class="section-kicker">Division 01</span>
           <h2>Marine Engineering Division</h2>
         </div>
         <div class="grid grid-2 split-shell">
@@ -100,7 +114,7 @@
   <!-- ================================================================
        MARINE ENGINEERING - CASE STUDIES
        ================================================================ -->
-  <section class="section section-light">
+  <section class="section section-light" data-division-section="marine">
     <div class="container">
       <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">Featured Marine Engineering Projects</h3>
       <div class="grid grid-3 division-project-grid info-grid">
@@ -149,11 +163,10 @@
   <!-- ================================================================
        SHIP BUILDING DIVISION
        ================================================================ -->
-  <section class="section" id="shipbuilding">
+  <section class="section" id="shipbuilding" data-division-section="shipbuilding">
     <div class="container">
       <div class="page-shell">
         <div class="section-title">
-          <span class="section-kicker">Division 02</span>
           <h2>Ship Building Division</h2>
         </div>
         <div class="grid grid-2 split-shell">
@@ -189,7 +202,7 @@
   <!-- ================================================================
        SHIPBUILDING - CASE STUDIES
        ================================================================ -->
-  <section class="section section-light">
+  <section class="section section-light" data-division-section="shipbuilding">
     <div class="container">
       <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">Recent Vessel Construction Projects</h3>
       <div class="grid grid-3 division-project-grid info-grid">
@@ -238,11 +251,10 @@
   <!-- ================================================================
        SHIP REPAIR & MODERNIZATION DIVISION
        ================================================================ -->
-  <section class="section" id="repair">
+  <section class="section" id="repair" data-division-section="repair">
     <div class="container">
       <div class="page-shell">
         <div class="section-title">
-          <span class="section-kicker">Division 03</span>
           <h2>Ship Repair & Modernization Division</h2>
         </div>
         <div class="grid grid-2 split-shell">
@@ -278,7 +290,7 @@
   <!-- ================================================================
        REPAIR - CASE STUDIES
        ================================================================ -->
-  <section class="section section-light">
+  <section class="section section-light" data-division-section="repair">
     <div class="container">
       <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">Successful Repair & Modernization Projects</h3>
       <div class="grid grid-3 division-project-grid info-grid">
@@ -327,7 +339,7 @@
   <!-- ================================================================
        DIVISION COMPARISON
        ================================================================ -->
-  <section class="section">
+  <section class="section" data-division-section="overview">
     <div class="container">
       <div class="section-title">
         <h2>Why Partner With Our Divisions?</h2>
@@ -429,6 +441,39 @@
   </footer>
 
   <!-- Scripts -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const division = params.get('division');
+      const allowed = ['marine', 'shipbuilding', 'repair'];
+      if (!division || !allowed.includes(division)) return;
+
+      const sectionMap = {
+        marine: 'Marine Engineering Division',
+        shipbuilding: 'Ship Building Division',
+        repair: 'Ship Repair & Modernization Division'
+      };
+
+      document.querySelectorAll('[data-division-section]').forEach(section => {
+        section.style.display = section.getAttribute('data-division-section') === division ? '' : 'none';
+      });
+
+      const heroHeading = document.querySelector('.page-hero-content h1');
+      if (heroHeading) {
+        heroHeading.textContent = sectionMap[division];
+      }
+
+      const breadcrumbCurrent = document.querySelector('.breadcrumb span:last-child');
+      if (breadcrumbCurrent) {
+        breadcrumbCurrent.textContent = sectionMap[division];
+      }
+    })();
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
+
+
+
+
+

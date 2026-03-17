@@ -23,8 +23,23 @@
       </button>
       <ul class="navbar-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="divisions.html">Divisions</a></li>
+                        <li class="nav-dropdown">
+          <a href="about.html" class="nav-dropdown-link">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="about.html">Company History</a></li>
+            <li><a href="about-values.html">Core Values</a></li>
+            <li><a href="about-leadership.html">Leadership Team</a></li>
+            <li><a href="about-certifications.html">Certifications</a></li>
+          </ul>
+        </li>
+                <li class="nav-dropdown">
+          <a href="divisions.html" class="nav-dropdown-link">Divisions</a>
+          <ul class="dropdown-menu">
+            <li><a href="divisions.html?division=marine">Marine Engineering</a></li>
+            <li><a href="divisions.html?division=shipbuilding">Ship Building</a></li>
+            <li><a href="divisions.html?division=repair">Ship Repair &amp; Modernization</a></li>
+          </ul>
+        </li>
         <li><a href="media.html">Media</a></li>
         <li><a href="partners.html">Partners</a></li>
         <li><a href="careers.html">Careers</a></li>
@@ -58,270 +73,38 @@
   </section>
 
   <!-- ================================================================
-       ABOUT DROPDOWN ACCORDION
+       COMPANY HISTORY (PRIMARY ABOUT PAGE CONTENT)
        ================================================================ -->
-  <section class="section" id="about-accordion">
+  <section class="section" id="company-history">
     <div class="container">
-      <div class="about-accordion-layout">
-        <div class="section-title">
-          <span class="section-kicker">About Us</span>
-          <h2>Explore Our Company</h2>
-          <p class="section-subtitle">Open each dropdown to view our story, values, leadership, certifications, and milestones.</p>
+      <div class="section-title">
+        <span class="section-kicker">About Us</span>
+        <h2>Company History</h2>
+        <p class="section-subtitle">A timeline of how we grew from a small team into a trusted marine engineering and shipbuilding partner.</p>
+      </div>
+
+      <div class="grid grid-2 split-shell">
+        <div class="content-panel">
+          <h3>From Vision to Reality</h3>
+          <p>Founded in 2003, Marine Engineering & Shipbuilding was established with a singular vision: to become a world-class provider of innovative marine engineering and shipbuilding solutions. What started as a small design firm has grown into a comprehensive marine services company serving clients across the globe.</p>
+          <h4>Our Journey</h4>
+          <ul class="structured-list">
+            <li><strong>2003:</strong> Company founded with 25 employees</li>
+            <li><strong>2008:</strong> Opened first shipyard facility with 200+ workforce</li>
+            <li><strong>2012:</strong> Achieved ISO 9001 certification</li>
+            <li><strong>2015:</strong> Expanded to three locations across India</li>
+            <li><strong>2018:</strong> Completed 100th ship project milestone</li>
+            <li><strong>2020:</strong> Established International division</li>
+            <li><strong>2023:</strong> Launched green technology initiative</li>
+            <li><strong>2024:</strong> New state-of-the-art facilities opened</li>
+          </ul>
         </div>
-
-        <div class="about-accordion">
-          <details class="accordion-item" open>
-            <summary class="accordion-summary">
-              <div>
-                <span class="accordion-title">Company History</span>
-              </div>
-              <span class="accordion-indicator" aria-hidden="true"></span>
-            </summary>
-            <div class="accordion-content">
-              <div class="grid grid-2 split-shell">
-                <div class="content-panel">
-                  <h3>From Vision to Reality</h3>
-                  <p>Founded in 2003, Marine Engineering & Shipbuilding was established with a singular vision: to become a world-class provider of innovative marine engineering and shipbuilding solutions. What started as a small design firm has grown into a comprehensive marine services company serving clients across the globe.</p>
-                  <h4>Our Journey</h4>
-                  <ul class="structured-list">
-                    <li><strong>2003:</strong> Company founded with 25 employees</li>
-                    <li><strong>2008:</strong> Opened first shipyard facility with 200+ workforce</li>
-                    <li><strong>2012:</strong> Achieved ISO 9001 certification</li>
-                    <li><strong>2015:</strong> Expanded to three locations across India</li>
-                    <li><strong>2018:</strong> Completed 100th ship project milestone</li>
-                    <li><strong>2020:</strong> Established International division</li>
-                    <li><strong>2023:</strong> Launched green technology initiative</li>
-                    <li><strong>2024:</strong> New state-of-the-art facilities opened</li>
-                  </ul>
-                </div>
-                <div class="media-panel">
-                  <img src="images/company-history.jpg" alt="Company history" class="feature-image">
-                  <div class="partner-note">
-                    <h4>Built on Reliability</h4>
-                    <p>Every phase of our growth has focused on quality, long-term partnerships, and engineering discipline.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="accordion-item">
-            <summary class="accordion-summary">
-              <div>
-                <span class="accordion-title">Core Values</span>
-              </div>
-              <span class="accordion-indicator" aria-hidden="true"></span>
-            </summary>
-            <div class="accordion-content">
-              <div class="grid grid-4 info-grid">
-                <div class="card feature-card value-card">
-                  <div class="card-content text-center">
-                    <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">⚓</h4>
-                    <h4>Excellence</h4>
-                    <p>We pursue excellence in every aspect of our work, from design to delivery</p>
-                  </div>
-                </div>
-                <div class="card feature-card value-card">
-                  <div class="card-content text-center">
-                    <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">🔬</h4>
-                    <h4>Innovation</h4>
-                    <p>Continuous innovation drives us to develop cutting-edge solutions</p>
-                  </div>
-                </div>
-                <div class="card feature-card value-card">
-                  <div class="card-content text-center">
-                    <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">🤝</h4>
-                    <h4>Integrity</h4>
-                    <p>Honesty and transparency in all our business dealings and relationships</p>
-                  </div>
-                </div>
-                <div class="card feature-card value-card">
-                  <div class="card-content text-center">
-                    <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">🌍</h4>
-                    <h4>Sustainability</h4>
-                    <p>Environmental responsibility and sustainable practices guide our operations</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="accordion-item">
-            <summary class="accordion-summary">
-              <div>
-                <span class="accordion-title">Leadership Team</span>
-              </div>
-              <span class="accordion-indicator" aria-hidden="true"></span>
-            </summary>
-            <div class="accordion-content">
-              <div class="grid grid-3 team-grid">
-                <div class="card feature-card team-card">
-                  <img src="images/leader-1.jpg" alt="Captain Rajesh Kumar" class="leader-card-image">
-                  <div class="card-content text-center">
-                    <h4>Captain Rajesh Kumar</h4>
-                    <div class="designation">Chief Executive Officer</div>
-                    <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">30+ years of experience in maritime industry. Visionary leader driving company growth and innovation in shipbuilding sector.</p>
-                    <div>
-                      <span class="certification">BBA</span>
-                      <span class="certification">MBA Maritime</span>
-                      <span class="certification">DSIR</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="card feature-card team-card">
-                  <img src="images/leader-2.jpg" alt="Dr. Priya Sharma" class="leader-card-image">
-                  <div class="card-content text-center">
-                    <h4>Dr. Priya Sharma</h4>
-                    <div class="designation">Chief Operating Officer</div>
-                    <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">PhD in Naval Architecture. Expert in operational excellence and process optimization.</p>
-                    <div>
-                      <span class="certification">PhD Naval Architecture</span>
-                      <span class="certification">PMP</span>
-                      <span class="certification">ISO 9001 Lead</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="card feature-card team-card">
-                  <img src="images/leader-3.jpg" alt="Vikram Desai" class="leader-card-image">
-                  <div class="card-content text-center">
-                    <h4>Vikram Desai</h4>
-                    <div class="designation">Chief Technology Officer</div>
-                    <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">25+ years in marine engineering design. Pioneer of sustainable shipping technologies.</p>
-                    <div>
-                      <span class="certification">BE Marine</span>
-                      <span class="certification">ME Naval</span>
-                      <span class="certification">SNAME</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="card feature-card team-card">
-                  <img src="images/leader-4.jpg" alt="Anjali Patel" class="leader-card-image">
-                  <div class="card-content text-center">
-                    <h4>Anjali Patel</h4>
-                    <div class="designation">Chief Financial Officer</div>
-                    <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">20+ years of financial management. Expertise in international maritime finance.</p>
-                    <div>
-                      <span class="certification">CA</span>
-                      <span class="certification">MBA Finance</span>
-                      <span class="certification">CPA</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="card feature-card team-card">
-                  <img src="images/leader-5.jpg" alt="Arun Menon" class="leader-card-image">
-                  <div class="card-content text-center">
-                    <h4>Arun Menon</h4>
-                    <div class="designation">VP Engineering &amp; Design</div>
-                    <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">18+ years specializing in advanced vessel design and 3D modeling technologies.</p>
-                    <div>
-                      <span class="certification">BE Naval</span>
-                      <span class="certification">CATIA Expert</span>
-                      <span class="certification">ABS Certified</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="card feature-card team-card">
-                  <img src="images/leader-6.jpg" alt="Meera Singh" class="leader-card-image">
-                  <div class="card-content text-center">
-                    <h4>Meera Singh</h4>
-                    <div class="designation">VP Operations &amp; Safety</div>
-                    <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">22+ years in shipyard operations. Champion of safety-first culture and quality management.</p>
-                    <div>
-                      <span class="certification">BE Mechanical</span>
-                      <span class="certification">NEBOSH</span>
-                      <span class="certification">Six Sigma</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="accordion-item">
-            <summary class="accordion-summary">
-              <div>
-                <span class="accordion-title">Certifications &amp; Accreditations</span>
-              </div>
-              <span class="accordion-indicator" aria-hidden="true"></span>
-            </summary>
-            <div class="accordion-content">
-              <div class="grid grid-2 info-grid certification-grid" style="max-width: 900px; margin: 0 auto;">
-                <div class="card feature-card">
-                  <div class="card-content">
-                    <h4>Quality &amp; Management</h4>
-                    <ul class="structured-list structured-list-tight">
-                      <li><strong>ISO 9001:2015</strong> - Quality Management System (Valid until 2025)</li>
-                      <li><strong>ISO 14001:2015</strong> - Environmental Management System (Valid until 2025)</li>
-                      <li><strong>ISO 45001:2018</strong> - Occupational Health &amp; Safety (Valid until 2025)</li>
-                      <li><strong>ISO 50001:2018</strong> - Energy Management System (Valid until 2024)</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card feature-card">
-                  <div class="card-content">
-                    <h4>Classification Societies</h4>
-                    <ul class="structured-list structured-list-tight">
-                      <li><strong>ABS</strong> - American Bureau of Shipping</li>
-                      <li><strong>DNV GL</strong> - Det Norske Veritas</li>
-                      <li><strong>Lloyd's Register</strong> - Class A Certification</li>
-                      <li><strong>Indian Register of Shipping</strong> - IRS Approved</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card feature-card">
-                  <div class="card-content">
-                    <h4>Government &amp; Regulatory</h4>
-                    <ul class="structured-list structured-list-tight">
-                      <li><strong>Ministry of Ports, Shipping &amp; Waterways</strong> Certified</li>
-                      <li><strong>DSIR</strong> - Department of Scientific &amp; Industrial Research</li>
-                      <li><strong>IMDR</strong> - Directorate for Inland Waterways</li>
-                      <li><strong>Port Authority</strong> - Approved Shipbuilder</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="card feature-card">
-                  <div class="card-content">
-                    <h4>Industry Standards</h4>
-                    <ul class="structured-list structured-list-tight">
-                      <li><strong>SNAME</strong> - Society of Naval Architects</li>
-                      <li><strong>IMarEST</strong> - Institute of Marine Engineering</li>
-                      <li><strong>IMTC</strong> - International Maritime Technology</li>
-                      <li><strong>Green Ship</strong> - Eco-Certification Programme</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </details>
-
-          <details class="accordion-item">
-            <summary class="accordion-summary">
-              <div>
-                <span class="accordion-title">By The Numbers</span>
-              </div>
-              <span class="accordion-indicator" aria-hidden="true"></span>
-            </summary>
-            <div class="accordion-content">
-              <div class="metric-grid">
-                <div class="metric-card">
-                  <span class="metric-number">20+</span>
-                  <span class="metric-label">Years of Experience</span>
-                </div>
-                <div class="metric-card">
-                  <span class="metric-number">500+</span>
-                  <span class="metric-label">Team Members</span>
-                </div>
-                <div class="metric-card">
-                  <span class="metric-number">100+</span>
-                  <span class="metric-label">Projects Completed</span>
-                </div>
-                <div class="metric-card">
-                  <span class="metric-number">50+</span>
-                  <span class="metric-label">Countries Served</span>
-                </div>
-              </div>
-            </div>
-          </details>
+        <div class="media-panel">
+          <img src="images/company-history.jpg" alt="Company history" class="feature-image">
+          <div class="partner-note">
+            <h4>Built on Reliability</h4>
+            <p>Every phase of our growth has focused on quality, long-term partnerships, and engineering discipline.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -386,3 +169,8 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
+
+
+
+

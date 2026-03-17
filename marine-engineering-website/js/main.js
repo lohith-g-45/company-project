@@ -9,7 +9,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   initializeNavbar();
   initializeSmoothScroll();
+  initializeMediaCarousels();
   initializeLightbox();
+  initializeArticleDetailsModal();
   initializeFormValidation();
   initializeScrollAnimations();
   initializeParallax();
@@ -23,6 +25,8 @@ function initializeNavbar() {
   const menu = document.querySelector('.navbar-menu');
   const navbar = document.querySelector('.navbar');
   const links = document.querySelectorAll('.navbar-menu a');
+  const dropdownLinks = document.querySelectorAll('.nav-dropdown > .nav-dropdown-link');
+  const dropdownItems = document.querySelectorAll('.nav-dropdown');
 
   // Mobile menu toggle
   if (toggle) {
@@ -34,8 +38,33 @@ function initializeNavbar() {
   // Close menu when a link is clicked
   links.forEach(link => {
     link.addEventListener('click', function() {
+      if (this.classList.contains('nav-dropdown-link') && window.innerWidth <= 768) {
+        return;
+      }
       menu.classList.remove('active');
+      dropdownItems.forEach(item => item.classList.remove('open'));
     });
+  });
+
+  // Mobile dropdown support for About Us submenu
+  dropdownLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth > 768) return;
+
+      e.preventDefault();
+      const parent = this.parentElement;
+      dropdownItems.forEach(item => {
+        if (item !== parent) item.classList.remove('open');
+      });
+      parent.classList.toggle('open');
+    });
+  });
+
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      dropdownItems.forEach(item => item.classList.remove('open'));
+      menu.classList.remove('active');
+    }
   });
 
   // Navbar scroll background change
@@ -97,10 +126,82 @@ function initializeSmoothScroll() {
 }
 
 /* ================================================================
-   3. LIGHTBOX FUNCTIONALITY
+   3. MEDIA CAROUSEL FUNCTIONALITY
+   ================================================================ */
+function initializeMediaCarousels() {
+  const carousels = document.querySelectorAll('[data-carousel]');
+
+  carousels.forEach(carousel => {
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    const prevButton = carousel.querySelector('.carousel-prev');
+    const nextButton = carousel.querySelector('.carousel-next');
+    const titleElement = carousel.querySelector('.carousel-title');
+    const countElement = carousel.querySelector('.carousel-count');
+
+    if (!slides.length) {
+      if (prevButton) prevButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+      return;
+    }
+
+    let currentIndex = 0;
+
+    function getSlideTitle(slide) {
+      if (slide.dataset.title) return slide.dataset.title;
+
+      const heading = slide.querySelector('.card-title');
+      if (heading && heading.textContent.trim()) return heading.textContent.trim();
+
+      const image = slide.querySelector('img');
+      if (image && image.alt.trim()) return image.alt.trim();
+
+      return 'Media item';
+    }
+
+    function renderSlide(index) {
+      slides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === index;
+        slide.classList.toggle('active', isActive);
+        slide.setAttribute('aria-hidden', String(!isActive));
+      });
+
+      if (titleElement) {
+        titleElement.textContent = getSlideTitle(slides[index]);
+      }
+
+      if (countElement) {
+        countElement.textContent = `Item ${index + 1} of ${slides.length}`;
+      }
+    }
+
+    function goToNext() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      renderSlide(currentIndex);
+    }
+
+    function goToPrevious() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      renderSlide(currentIndex);
+    }
+
+    if (prevButton) prevButton.addEventListener('click', goToPrevious);
+    if (nextButton) nextButton.addEventListener('click', goToNext);
+
+    if (slides.length === 1) {
+      if (prevButton) prevButton.style.display = 'none';
+      if (nextButton) nextButton.style.display = 'none';
+    }
+
+    renderSlide(currentIndex);
+  });
+}
+
+/* ================================================================
+   4. LIGHTBOX FUNCTIONALITY
    ================================================================ */
 function initializeLightbox() {
   const galleryItems = document.querySelectorAll('[data-lightbox]');
+  const expandableImages = document.querySelectorAll('img[data-expand-image]');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImage');
   const closeBtn = document.querySelector('.lightbox-close');
@@ -112,6 +213,27 @@ function initializeLightbox() {
   let currentImageIndex = 0;
   let currentGallery = [];
 
+  function getImageData(item) {
+    if (!item) return { src: '', alt: 'Gallery image' };
+
+    if (item.tagName === 'IMG') {
+      return {
+        src: item.dataset.src || item.currentSrc || item.src,
+        alt: item.alt || 'Gallery image'
+      };
+    }
+
+    const nestedImage = item.querySelector('img');
+    if (nestedImage) {
+      return {
+        src: item.dataset.src || nestedImage.dataset.src || nestedImage.currentSrc || nestedImage.src,
+        alt: nestedImage.alt || 'Gallery image'
+      };
+    }
+
+    return { src: item.dataset.src || '', alt: 'Gallery image' };
+  }
+
   // Open lightbox
   galleryItems.forEach((item, index) => {
     item.addEventListener('click', function(e) {
@@ -119,6 +241,15 @@ function initializeLightbox() {
       const lightboxGroup = this.getAttribute('data-lightbox');
       currentGallery = Array.from(document.querySelectorAll(`[data-lightbox="${lightboxGroup}"]`));
       currentImageIndex = currentGallery.indexOf(this);
+      showLightboxImage();
+    });
+  });
+
+  expandableImages.forEach(image => {
+    image.addEventListener('click', function(e) {
+      e.preventDefault();
+      currentGallery = [this];
+      currentImageIndex = 0;
       showLightboxImage();
     });
   });
@@ -157,9 +288,20 @@ function initializeLightbox() {
   });
 
   function showLightboxImage() {
-    const img = currentGallery[currentImageIndex];
-    lightboxImg.src = img.dataset.src || img.src;
-    lightboxImg.alt = img.alt || 'Gallery image';
+    if (!currentGallery.length) return;
+
+    const currentItem = currentGallery[currentImageIndex];
+    const { src, alt } = getImageData(currentItem);
+
+    if (!src) return;
+
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+
+    const hasMultipleItems = currentGallery.length > 1;
+    prevBtn.style.display = hasMultipleItems ? '' : 'none';
+    nextBtn.style.display = hasMultipleItems ? '' : 'none';
+
     lightbox.classList.add('active');
   }
 
@@ -169,7 +311,116 @@ function initializeLightbox() {
 }
 
 /* ================================================================
-   4. FORM VALIDATION & SUBMISSION
+   5. ARTICLE DETAILS MODAL
+   ================================================================ */
+function initializeArticleDetailsModal() {
+  const articleLinks = document.querySelectorAll('[data-article-id]');
+  const modal = document.getElementById('articleModal');
+  const closeButton = modal ? modal.querySelector('.article-modal-close') : null;
+  const titleElement = document.getElementById('articleModalTitle');
+  const metaElement = document.getElementById('articleModalMeta');
+  const bodyElement = document.getElementById('articleModalBody');
+
+  if (!modal || !titleElement || !metaElement || !bodyElement) return;
+
+  const articleDetails = {
+    'featured-green-initiative': {
+      title: 'Revolutionary Green Shipbuilding Initiative Launched',
+      meta: 'March 2024 | Strategic Sustainability Program',
+      paragraphs: [
+        'Marine Engineering & Shipbuilding has launched a multi-year green shipbuilding initiative focused on reducing lifecycle emissions across design, fabrication, and operations.',
+        'The program includes low-emission propulsion options, energy-optimized hull design, and the integration of digital monitoring systems to improve fuel efficiency during vessel operations.',
+        'A dedicated investment plan has been approved for cleaner fabrication workflows, yard electrification, and supplier alignment to support measurable ESG targets.',
+        'Pilot vessel classes under this initiative are scheduled for phased rollout, with performance metrics tracked against baseline emissions and energy consumption benchmarks.'
+      ]
+    },
+    'industry-awards': {
+      title: 'Industry Awards & Recognition',
+      meta: 'January 2024 | Corporate Milestone',
+      paragraphs: [
+        'The company received multiple recognitions for manufacturing excellence, quality assurance, and sustainability leadership in maritime engineering.',
+        'Independent evaluators highlighted improvements in process standardization, defect reduction, and delivery reliability across key programs.',
+        'Internal capability development and cross-functional execution were cited as major drivers behind the recognition, particularly in high-complexity projects.'
+      ]
+    },
+    'research-lab': {
+      title: 'Advanced Research Lab Inaugurated',
+      meta: 'December 2023 | Innovation Infrastructure',
+      paragraphs: [
+        'A new marine R&D lab has been inaugurated to accelerate testing of propulsion systems, materials, and digital performance analytics.',
+        'The facility supports controlled simulation environments and rapid prototyping for next-generation vessel systems.',
+        'Research priorities include durability, energy optimization, and reduced maintenance overhead under real-world operating conditions.'
+      ]
+    },
+    'major-contract': {
+      title: 'Major Contract Secured',
+      meta: 'November 2023 | International Program',
+      paragraphs: [
+        'Marine Engineering & Shipbuilding has secured a high-value international contract for a fleet of advanced container vessels.',
+        'The scope covers end-to-end execution including design finalization, construction, integration, and delivery milestones.',
+        'Dedicated program governance, supplier alignment, and schedule controls are in place to ensure on-time, quality-compliant delivery.'
+      ]
+    },
+    'technology-partnership': {
+      title: 'Technology Partnership Announced',
+      meta: 'October 2023 | Digital Transformation',
+      paragraphs: [
+        'Strategic technology partnerships have been announced to strengthen AI and IoT integration across shipbuilding workflows.',
+        'Planned use cases include predictive maintenance, yard productivity analytics, and enhanced quality visibility across production stages.',
+        'The partnership roadmap focuses on scalable deployment, workforce enablement, and measurable efficiency gains over staged implementation cycles.'
+      ]
+    },
+    'employment-campaign': {
+      title: 'Employment Campaign Success',
+      meta: 'September 2023 | Workforce Development',
+      paragraphs: [
+        'A focused hiring and skilling campaign added over 150 professionals across production, engineering, and support functions.',
+        'The campaign included structured onboarding, technical training, and role-specific certification pathways to improve readiness.',
+        'This expansion strengthens execution capacity while building a long-term talent pipeline aligned with future project demand.'
+      ]
+    }
+  };
+
+  function openArticle(articleId) {
+    const article = articleDetails[articleId];
+    if (!article) return;
+
+    titleElement.textContent = article.title;
+    metaElement.textContent = article.meta;
+    bodyElement.innerHTML = article.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('');
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeArticleModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  articleLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      openArticle(this.dataset.articleId);
+    });
+  });
+
+  if (closeButton) {
+    closeButton.addEventListener('click', closeArticleModal);
+  }
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeArticleModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeArticleModal();
+    }
+  });
+}
+
+/* ================================================================
+  6. FORM VALIDATION & SUBMISSION
    ================================================================ */
 function initializeFormValidation() {
   const forms = document.querySelectorAll('form');
@@ -321,7 +572,7 @@ function showErrorMessage(form, message) {
 }
 
 /* ================================================================
-   5. SCROLL ANIMATIONS
+  7. SCROLL ANIMATIONS
    ================================================================ */
 function initializeScrollAnimations() {
   const observerOptions = {
@@ -345,7 +596,7 @@ function initializeScrollAnimations() {
 }
 
 /* ================================================================
-   6. PARALLAX EFFECT
+  8. PARALLAX EFFECT
    ================================================================ */
 function initializeParallax() {
   const parallaxElements = document.querySelectorAll('[data-parallax]');
@@ -362,7 +613,7 @@ function initializeParallax() {
 }
 
 /* ================================================================
-   7. UTILITY FUNCTIONS
+  9. UTILITY FUNCTIONS
    ================================================================ */
 
 /**
@@ -496,7 +747,7 @@ if (document.readyState === 'loading') {
 }
 
 /* ================================================================
-   8. EXPORT FOR USE IN OTHER MODULES
+  10. EXPORT FOR USE IN OTHER MODULES
    ================================================================ */
 window.MarineEngineeringUI = {
   validateForm,
